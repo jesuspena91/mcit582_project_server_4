@@ -40,7 +40,7 @@ def fill_order(order):
     # Check if there are any existing orders that match
     query = (g.session.query(Order)
               .filter(Order.filled == None)
-              .filter(Order.buy_currency == order.sell_currency.)
+              .filter(Order.buy_currency == order.sell_currency)
               .filter(Order.sell_currency == order.buy_currency)
               .filter((Order.sell_amount/Order.buy_amount) >= (order.buy_amount/order.sell_amount))
             )
