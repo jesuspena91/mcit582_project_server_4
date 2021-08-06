@@ -40,18 +40,18 @@ def fill_order(order):
     # Check if there are any existing orders that match
     query = (g.session.query(Order)
               .filter(Order.filled == None)
-              .filter(Order.buy_currency == order['sell_currency'])
-              .filter(Order.sell_currency == order['buy_currency'])
-              .filter((Order.sell_amount/Order.buy_amount) >= (order['buy_amount']/order['sell_amount']))
+              .filter(Order.buy_currency == order.sell_currency.)
+              .filter(Order.sell_currency == order.buy_currency)
+              .filter((Order.sell_amount/Order.buy_amount) >= (order.buy_amount/order.sell_amount))
             )
     
     # Inserting order in database
-    new_order = Order( sender_pk=order['sender_pk'],
-        receiver_pk=order['receiver_pk'], 
-        buy_currency=order['buy_currency'], 
-        sell_currency=order['sell_currency'], 
-        buy_amount=order['buy_amount'], 
-        sell_amount=order['sell_amount'] )
+    new_order = Order( sender_pk=order.sender_pk,
+        receiver_pk=order.receiver_pk, 
+        buy_currency=order.buy_currency, 
+        sell_currency=order.sell_currency, 
+        buy_amount=order.buy_amount, 
+        sell_amount=order.sell_amount )
     g.session.add(new_order)
     g.session.commit()
     
